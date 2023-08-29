@@ -5,6 +5,10 @@
 - Dahua VTO (e.g. VTO4202F-P)
 - Contactron, for example from [this link](https://a.aliexpress.com/_mNvNBtk)
 
+### YT
+
+https://youtu.be/k64-3JSmAEI
+https://youtu.be/s1z7GmH05ak
 
 ### 1. Preparing Texts
 
