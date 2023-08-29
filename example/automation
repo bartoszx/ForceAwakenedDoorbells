@@ -1,1 +1,45 @@
-a
+alias: Postbox opened
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.postbox
+    from: "off"
+    to: "on"
+condition: []
+action:
+  - service: homeassistant.turn_off
+    target:
+      entity_id: input_boolean.uhavemail
+    data: {}
+mode: single
+
+
+alias: U have mail
+trigger:
+  - platform: state
+    entity_id: input_boolean.uhavemail
+    to: "on"
+condition: []
+action:
+  - service: shell_command.play_thankyou_for_mail
+  - data:
+      volume_level: 0.6
+    entity_id:
+      - media_player.kitchen_speaker
+    service: media_player.volume_set
+  - service: tts.google_say
+    data:
+      entity_id:
+        - media_player.kitchen_speaker
+      message: "You've Got Mail."
+  - service: notify.MOBILE_DEVICES
+    data:
+      title: |
+        {{ "\U0001F4EE" }} Postman
+      message: Nowy list
+      data:
+        attachment:
+          url: /media/local/local/listonosz.jpg
+          content-type: jpeg
+          hide-thumbnail: false
+mode: single
