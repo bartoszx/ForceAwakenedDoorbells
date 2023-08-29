@@ -60,5 +60,11 @@ shell_command:
         /bin/bash -c "file=$(find /config/mp3 -name 'welcome-*.al' | shuf -n 1); echo $file; /usr/bin/curl -vvv -F "file=@$file;type=Audio/G.711A" -H "Content-Type: Audio/G.711A" "http://u:p@10.6.0.12/cgi-bin/audio.cgi?action=postAudio&httptype=singlepart&channel=1" --speed-limit 1 --speed-time 1;"
 ```
 
+### 6. Create automation 
+
+Add automation to your ha as usual and call script. Check scripts and automation in example folder.
+When someone presses the doorbell, I trigger this script through automation, which interrupts the ringing and plays the greeting.
+
+
 ### Notes
 - Remember to adjust the paths in the above commands to your specific directory structure.
