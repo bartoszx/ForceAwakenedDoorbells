@@ -1,0 +1,18 @@
+alias: furtka-cancel-ring-send-voice
+sequence:
+  - service: dahua_vto.open_door
+    data:
+      entity_id: sensor.furtka
+      channel: 1
+      short_number: HA
+  - service: dahua_vto.send_command
+    data:
+      entity_id: sensor.furtka
+      method: console.runCmd
+      params:
+        command: hc
+      event: false
+  - delay: "00:00:02"
+  - service: shell_command.play_zapraszamy
+    data: {}
+mode: single
